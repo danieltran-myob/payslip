@@ -32,13 +32,13 @@ namespace Payslip
             {
                 return 0;
             } else if (AnnualSalary > 18200 && AnnualSalary <= 37000) {
-                return Math.Ceiling((AnnualSalary - 18200) * 0.19); 
+                return Math.Ceiling(((AnnualSalary - 18200) * 0.19) / 12); 
             } else if (AnnualSalary > 37000 && AnnualSalary <= 87000) {
                 return Math.Ceiling((3572 + (AnnualSalary - 37000) * 0.325) / 12);
             } else if (AnnualSalary > 87000 && AnnualSalary <= 180000) {
                 return Math.Ceiling((19822 + (AnnualSalary - 87000) * 0.37) / 12);
             } else {
-                return Math.Ceiling((54232 + (AnnualSalary - 180000) * 0.45));
+                return Math.Ceiling((54232 + (AnnualSalary - 180000) * 0.45) / 12);
             }
         }
 
