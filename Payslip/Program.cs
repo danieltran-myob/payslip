@@ -8,6 +8,8 @@ namespace Payslip
         {
             GenerateSlip generateSlip = new GenerateSlip();
 
+            Console.WriteLine("Welcome to the payslip generator!");
+
             Console.Write("Please input your name:  ");
             generateSlip.Name = Console.ReadLine();
             Console.Write("Please input your surname:  ");
