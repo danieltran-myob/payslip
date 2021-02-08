@@ -56,7 +56,7 @@ namespace Payslip
                     }
                     
                 }
-            } else {
+            } else if (answer == "NO") {
             Console.Write("Please input your name:  ");
             generateSlip.Name = Console.ReadLine();
             Console.Write("Please input your surname:  ");
@@ -72,6 +72,8 @@ namespace Payslip
             Console.WriteLine(" \n Your payslip has been generated: \n");
 
             Console.WriteLine(generateSlip.PrintPaySlip());
+            } else {
+                Console.WriteLine("Answer is invalid");
             }
         }
     }
