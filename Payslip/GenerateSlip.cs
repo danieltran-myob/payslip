@@ -3,31 +3,31 @@ using System.IO;
 using System.Collections.Generic;
 namespace Payslip
 {
-    class GenerateSlip
+    static class GenerateSlip
     {
-        public string Name
+        public static string Name
         {get; set;}
-        public string Surname
+        public static string Surname
         {get; set;}
-        public double AnnualSalary
+        public static double AnnualSalary
         {get; set;}
-        public double SuperRate
+        public static double SuperRate
         {get; set;}
-        public string PaymentStartDate
+        public static string PaymentStartDate
         {get; set;}
-        public string PaymentEndDate
+        public static string PaymentEndDate
         {get; set;}
 
-        public string PayPeriod()
+        public static string PayPeriod()
         {
             return String.IsNullOrEmpty(PaymentEndDate) ? PaymentStartDate : $"{PaymentStartDate} - {PaymentEndDate}";
         }
-        public double GrossIncome()
+        public static double GrossIncome()
         {
             return Math.Floor(AnnualSalary/12);
         }
 
-        public double IncomeTax()
+        public static double IncomeTax()
         {
             if(AnnualSalary <= 18200)
             {
@@ -43,17 +43,17 @@ namespace Payslip
             }
         }
 
-        public double NetIncome()
+        public static double NetIncome()
         {
             return GrossIncome() - IncomeTax();
         }
 
-        public double Super()
+        public static double Super()
         {
             return Math.Floor(GrossIncome() * (SuperRate/100));
         }
 
-        public string PrintPaySlip()
+        public static string PrintPaySlip()
         {
             return $"Name: {Name} {Surname} \nPay Period: {PayPeriod()} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
         }

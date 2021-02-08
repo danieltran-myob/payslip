@@ -8,7 +8,6 @@ namespace Payslip
     {
         static void Main(string[] args)
         {
-            GenerateSlip generateSlip = new GenerateSlip();
 
             Console.WriteLine("Welcome to the payslip generator!");
             
@@ -46,33 +45,33 @@ namespace Payslip
                     
                     for (int i = 1; i < firstNameArr.Length; i++)
                     {
-                        generateSlip.Name = firstNameArr[i];
-                        generateSlip.Surname = lastNameArr[i];
-                        generateSlip.AnnualSalary = Convert.ToDouble(annualSalaryArr[i]);
-                        generateSlip.SuperRate = Convert.ToDouble(superRateArr[i].Replace("%",""));
-                        generateSlip.PaymentStartDate = paymentStartDateArr[i];
+                        GenerateSlip.Name = firstNameArr[i];
+                        GenerateSlip.Surname = lastNameArr[i];
+                        GenerateSlip.AnnualSalary = Convert.ToDouble(annualSalaryArr[i]);
+                        GenerateSlip.SuperRate = Convert.ToDouble(superRateArr[i].Replace("%",""));
+                        GenerateSlip.PaymentStartDate = paymentStartDateArr[i];
 
-                        Console.WriteLine(generateSlip.PrintPaySlip());
-                        String.IsNullOrEmpty(generateSlip.PaymentEndDate);
+                        Console.WriteLine(GenerateSlip.PrintPaySlip());
+                        String.IsNullOrEmpty(GenerateSlip.PaymentEndDate);
                     }
                     
                 }
             } else if (answer == "NO") {
             Console.Write("Please input your name:  ");
-            generateSlip.Name = Console.ReadLine();
+            GenerateSlip.Name = Console.ReadLine();
             Console.Write("Please input your surname:  ");
-            generateSlip.Surname = Console.ReadLine();
+            GenerateSlip.Surname = Console.ReadLine();
             Console.Write("Please enter your annual salary:  ");
-            generateSlip.AnnualSalary = Convert.ToDouble(Console.ReadLine());
+            GenerateSlip.AnnualSalary = Convert.ToDouble(Console.ReadLine());
             Console.Write("Please enter your super rate:  ");
-            generateSlip.SuperRate = Convert.ToDouble(Console.ReadLine());
+            GenerateSlip.SuperRate = Convert.ToDouble(Console.ReadLine());
             Console.Write("Please enter your payment start date:  ");
-            generateSlip.PaymentStartDate = Console.ReadLine();
+            GenerateSlip.PaymentStartDate = Console.ReadLine();
             Console.Write("Please enter your payment end date:  ");
-            generateSlip.PaymentEndDate = Console.ReadLine();
+            GenerateSlip.PaymentEndDate = Console.ReadLine();
             Console.WriteLine(" \n Your payslip has been generated: \n");
 
-            Console.WriteLine(generateSlip.PrintPaySlip());
+            Console.WriteLine(GenerateSlip.PrintPaySlip());
             } else {
                 Console.WriteLine("Answer is invalid");
             }
