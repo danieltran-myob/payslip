@@ -53,6 +53,7 @@ namespace Payslip
                         generateSlip.PaymentStartDate = paymentStartDateArr[i];
 
                         Console.WriteLine(generateSlip.PrintPaySlip());
+                        String.IsNullOrEmpty(generateSlip.PaymentEndDate);
                     }
                     
                 }

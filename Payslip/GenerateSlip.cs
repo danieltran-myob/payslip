@@ -20,7 +20,7 @@ namespace Payslip
 
         public string PayPeriod()
         {
-            return $"{PaymentStartDate} - {PaymentEndDate}";
+            return String.IsNullOrEmpty(PaymentEndDate) ? PaymentStartDate : $"{PaymentStartDate} - {PaymentEndDate}";
         }
         public double GrossIncome()
         {
@@ -55,7 +55,7 @@ namespace Payslip
 
         public string PrintPaySlip()
         {
-            return $"Name: {Name} {Surname} \nPay Period: {PaymentStartDate} – {PaymentEndDate} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
+            return $"Name: {Name} {Surname} \nPay Period: {PayPeriod()} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
         }
     }
 }
