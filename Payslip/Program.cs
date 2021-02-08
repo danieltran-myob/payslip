@@ -15,7 +15,17 @@ namespace Payslip
             string answer = Console.ReadLine().ToUpper();
             if(answer == "YES")
             {
-                Console.Write("Please enter the csv file you would like to upload.  ");
+                useCsv();
+            } else if (answer == "NO") {
+                manualInput();
+            } else {
+                Console.WriteLine("Answer is invalid");
+            }
+        }
+
+        static void useCsv()
+        {
+            Console.Write("Please enter the csv file you would like to upload.  ");
                 string csvFile = Console.ReadLine();
                 using(var reader = new StreamReader($"csv/{csvFile}"))
                 {
@@ -56,7 +66,9 @@ namespace Payslip
                     }
                     
                 }
-            } else if (answer == "NO") {
+        }
+        static void manualInput()
+        {
             Console.Write("Please input your name:  ");
             GenerateSlip.Name = Console.ReadLine();
             Console.Write("Please input your surname:  ");
@@ -72,9 +84,6 @@ namespace Payslip
             Console.WriteLine(" \n Your payslip has been generated: \n");
 
             Console.WriteLine(GenerateSlip.PrintPaySlip());
-            } else {
-                Console.WriteLine("Answer is invalid");
-            }
         }
     }
 }
