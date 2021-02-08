@@ -1,5 +1,6 @@
 using System;
-
+using System.IO;
+using System.Collections.Generic;
 namespace Payslip
 {
     class GenerateSlip
@@ -54,7 +55,7 @@ namespace Payslip
 
         public string PrintPaySlip()
         {
-            return $"Name: {Name} {Surname} \nPay Period: {PaymentStartDate} – {PaymentEndDate} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()}";
+            return $"Name: {Name} {Surname} \nPay Period: {PaymentStartDate} – {PaymentEndDate} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
         }
     }
 }
