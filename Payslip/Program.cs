@@ -53,6 +53,8 @@ namespace Payslip
                     string[] superRateArr = superRateList.ToArray();
                     string[] paymentStartDateArr = paymentStartDateList.ToArray();
                     
+                    csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
+
                     for (int i = 1; i < firstNameArr.Length; i++)
                     {
                         GenerateSlip.Name = firstNameArr[i];
@@ -62,8 +64,13 @@ namespace Payslip
                         GenerateSlip.PaymentStartDate = paymentStartDateArr[i];
 
                         Console.WriteLine(GenerateSlip.PrintPaySlip());
+                        csvcontent.AppendLine($"{GenerateSlip.Name} {GenerateSlip.Surname},{GenerateSlip.PayPeriod()},{GenerateSlip.GrossIncome()},{GenerateSlip.IncomeTax()},{GenerateSlip.NetIncome()} , {GenerateSlip.Super()}");
+                        
+                        
                         // generateCsv();
                     }
+                    string csvPath = $"csvOutput/new.csv";
+                    File.AppendAllText(csvPath, csvcontent.ToString());
                 }
         }
         static void manualInput()
@@ -84,6 +91,11 @@ namespace Payslip
 
             Console.WriteLine(GenerateSlip.PrintPaySlip());
             // generateCsv();
+
+            csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
+            csvcontent.AppendLine($"{GenerateSlip.Name} {GenerateSlip.Surname},{GenerateSlip.PayPeriod()},{GenerateSlip.GrossIncome()},{GenerateSlip.IncomeTax()},{GenerateSlip.NetIncome()} , {GenerateSlip.Super()}");
+            string csvPath = $"csvOutput/new.csv";
+            File.AppendAllText(csvPath, csvcontent.ToString());
         }
 
         // static void generateCsv()
