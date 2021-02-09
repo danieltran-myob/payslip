@@ -1,14 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Payslip
 {
     class Program
     {
+        static StringBuilder csvcontent = new StringBuilder();
         static void Main(string[] args)
         {
-
+            
             Console.WriteLine("Welcome to the payslip generator!");
             
             Console.Write("Would you like to upload a csv file? Please answer YES/NO    ");
@@ -45,8 +47,6 @@ namespace Payslip
                         superRateList.Add(values[3]);
                         paymentStartDateList.Add(values[4]);
                     }
-                    // Console.WriteLine(firstNameCsv[2]);
-                    // Console.WriteLine(lastNameCsv[2]);
                     string[] firstNameArr = firstNameList.ToArray();
                     string[] lastNameArr = lastNameList.ToArray();
                     string[] annualSalaryArr = annualSalaryList.ToArray();
@@ -62,9 +62,8 @@ namespace Payslip
                         GenerateSlip.PaymentStartDate = paymentStartDateArr[i];
 
                         Console.WriteLine(GenerateSlip.PrintPaySlip());
-                        String.IsNullOrEmpty(GenerateSlip.PaymentEndDate);
+                        // generateCsv();
                     }
-                    
                 }
         }
         static void manualInput()
@@ -84,6 +83,15 @@ namespace Payslip
             Console.WriteLine(" \n Your payslip has been generated: \n");
 
             Console.WriteLine(GenerateSlip.PrintPaySlip());
+            // generateCsv();
         }
+
+        // static void generateCsv()
+        // {
+        //     csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
+        //     csvcontent.AppendLine($"{GenerateSlip.Name} {GenerateSlip.Surname},{GenerateSlip.PayPeriod()},{GenerateSlip.GrossIncome()},{GenerateSlip.IncomeTax()},{GenerateSlip.NetIncome()} , {GenerateSlip.Super()}");
+        //     string csvPath = $"csvOutput/new.csv";
+        //     File.AppendAllText(csvPath, csvcontent.ToString());
+        // }
     }
 }
