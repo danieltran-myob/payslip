@@ -47,21 +47,16 @@ namespace Payslip
                         superRateList.Add(values[3]);
                         paymentStartDateList.Add(values[4]);
                     }
-                    string[] firstNameArr = firstNameList.ToArray();
-                    string[] lastNameArr = lastNameList.ToArray();
-                    string[] annualSalaryArr = annualSalaryList.ToArray();
-                    string[] superRateArr = superRateList.ToArray();
-                    string[] paymentStartDateArr = paymentStartDateList.ToArray();
                     
                     csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
 
-                    for (int i = 1; i < firstNameArr.Length; i++)
+                    for (int i = 1; i < firstNameList.Count; i++)
                     {
-                        GenerateSlip.Name = firstNameArr[i];
-                        GenerateSlip.Surname = lastNameArr[i];
-                        GenerateSlip.AnnualSalary = Convert.ToDouble(annualSalaryArr[i]);
-                        GenerateSlip.SuperRate = Convert.ToDouble(superRateArr[i].Replace("%",""));
-                        GenerateSlip.PaymentStartDate = paymentStartDateArr[i];
+                        GenerateSlip.Name = firstNameList[i];
+                        GenerateSlip.Surname = lastNameList[i];
+                        GenerateSlip.AnnualSalary = Convert.ToDouble(annualSalaryList[i]);
+                        GenerateSlip.SuperRate = Convert.ToDouble(superRateList[i].Replace("%",""));
+                        GenerateSlip.PaymentStartDate = paymentStartDateList[i];
 
                         Console.WriteLine(GenerateSlip.PrintPaySlip());
                         csvcontent.AppendLine($"{GenerateSlip.Name} {GenerateSlip.Surname},{GenerateSlip.PayPeriod()},{GenerateSlip.GrossIncome()},{GenerateSlip.IncomeTax()},{GenerateSlip.NetIncome()} , {GenerateSlip.Super()}");
