@@ -62,7 +62,6 @@ namespace Payslip
                         csvcontent.AppendLine($"{GenerateSlip.Name} {GenerateSlip.Surname},{GenerateSlip.PayPeriod()},{GenerateSlip.GrossIncome()},{GenerateSlip.IncomeTax()},{GenerateSlip.NetIncome()} , {GenerateSlip.Super()}");
                         
                         
-                        // generateCsv();
                     }
                     string csvPath = $"csvOutput/new.csv";
                     File.AppendAllText(csvPath, csvcontent.ToString());
@@ -85,20 +84,11 @@ namespace Payslip
             Console.WriteLine(" \n Your payslip has been generated: \n");
 
             Console.WriteLine(GenerateSlip.PrintPaySlip());
-            // generateCsv();
 
             csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
             csvcontent.AppendLine($"{GenerateSlip.Name} {GenerateSlip.Surname},{GenerateSlip.PayPeriod()},{GenerateSlip.GrossIncome()},{GenerateSlip.IncomeTax()},{GenerateSlip.NetIncome()} , {GenerateSlip.Super()}");
             string csvPath = $"csvOutput/new.csv";
             File.AppendAllText(csvPath, csvcontent.ToString());
         }
-
-        // static void generateCsv()
-        // {
-        //     csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
-        //     csvcontent.AppendLine($"{GenerateSlip.Name} {GenerateSlip.Surname},{GenerateSlip.PayPeriod()},{GenerateSlip.GrossIncome()},{GenerateSlip.IncomeTax()},{GenerateSlip.NetIncome()} , {GenerateSlip.Super()}");
-        //     string csvPath = $"csvOutput/new.csv";
-        //     File.AppendAllText(csvPath, csvcontent.ToString());
-        // }
     }
 }
