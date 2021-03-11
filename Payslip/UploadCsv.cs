@@ -12,11 +12,11 @@ namespace Payslip
                 string csvFile = Console.ReadLine();
                 using(var reader = new StreamReader($"csv/{csvFile}"))
                 {
-                    List<string> firstNameList = new List<string>();
-                    List<string> lastNameList = new List<string>();
-                    List<string> annualSalaryList = new List<string>();
-                    List<string> superRateList = new List<string>();
-                    List<string> paymentStartDateList = new List<string>();
+                    var firstNameList = new List<string>();
+                    var lastNameList = new List<string>();
+                    var annualSalaryList = new List<string>();
+                    var superRateList = new List<string>();
+                    var paymentStartDateList = new List<string>();
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
