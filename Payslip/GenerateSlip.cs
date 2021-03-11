@@ -1,33 +1,33 @@
 using System;
 using System.IO;
-using System.Collections.Generic;
+using System.Text;
 namespace Payslip
 {
-    static class GenerateSlip
+    class GenerateSlip
     {
-        public static string Name
+        public  string Name
         {get; set;}
-        public static string Surname
+        public  string Surname
         {get; set;}
-        public static double AnnualSalary
+        public  double AnnualSalary
         {get; set;}
-        public static double SuperRate
+        public  double SuperRate
         {get; set;}
-        public static string PaymentStartDate
+        public  string PaymentStartDate
         {get; set;}
-        public static string PaymentEndDate
+        public  string PaymentEndDate
         {get; set;}
 
-        public static string PayPeriod()
+        public  string PayPeriod()
         {
             return String.IsNullOrEmpty(PaymentEndDate) ? PaymentStartDate : $"{PaymentStartDate} - {PaymentEndDate}";
         }
-        public static double GrossIncome()
+        public  double GrossIncome()
         {
             return Math.Floor(AnnualSalary/12);
         }
 
-        public static double IncomeTax()
+        public  double IncomeTax()
         {
             if(AnnualSalary <= 18200)
             {
@@ -43,19 +43,28 @@ namespace Payslip
             }
         }
 
-        public static double NetIncome()
+        public  double NetIncome()
         {
             return GrossIncome() - IncomeTax();
         }
 
-        public static double Super()
+        public  double Super()
         {
             return Math.Floor(GrossIncome() * (SuperRate/100));
         }
 
-        public static string PrintPaySlip()
+        public  string PrintPaySlip()
         {
             return $"Name: {Name} {Surname} \nPay Period: {PayPeriod()} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
         }
+
+        public void GenerateCsv()
+        {
+                StringBuilder csvcontent = new StringBuilder();
+                csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
+                csvcontent.AppendLine($"{Name} {Surname},{PayPeriod()},{GrossIncome()},{IncomeTax()},{NetIncome()} , {Super()}");
+                string csvPath = $"csvOutput/new.csv";
+                File.AppendAllText(csvPath, csvcontent.ToString());
+        }     
     }
 }
