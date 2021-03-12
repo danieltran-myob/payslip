@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 namespace Payslip
 {
+// describe the class
     class UploadCsv : GenerateSlip
     {
         public void Upload()
