@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 namespace Payslip
 {
+    /// <summary>
+    /// Class is inherits from GenerateSlip class.
+    /// </summary>
     class UploadCsv : GenerateSlip
     {
         public void Upload()

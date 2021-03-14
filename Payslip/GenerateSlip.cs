@@ -3,6 +3,9 @@ using System.IO;
 using System.Text;
 namespace Payslip
 {
+    /// <summary>
+    /// Base class, calculates and outputs the payslip to the console.
+    /// </summary>
     class GenerateSlip
     {
         public  string Name
@@ -26,7 +29,11 @@ namespace Payslip
         {
             return Math.Floor(AnnualSalary/12);
         }
-
+        
+        /// <summary>
+        /// Income tax calculator 
+        /// </summary>
+        /// <returns>Income tax based on Annual salary</returns>
         public  double IncomeTax()
         {
             if(AnnualSalary <= 18200)
@@ -58,6 +65,9 @@ namespace Payslip
             return $"Name: {Name} {Surname} \nPay Period: {PayPeriod()} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
         }
 
+        /// <summary>
+        /// Method creates a csv output for the payslip
+        /// </summary>
         public void GenerateCsv()
         {
                 StringBuilder csvcontent = new StringBuilder();

@@ -3,6 +3,9 @@ using System.IO;
 using System.Collections.Generic;
 namespace Payslip
 {
+    /// <summary>
+    /// Class is inherits from GenerateSlip class
+    /// </summary>
     class ManualInput : GenerateSlip
     {
         public void Manual()
