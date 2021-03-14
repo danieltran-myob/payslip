@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Payslip
 {
     /// <summary>
-    /// Class is inherits from GenerateSlip class.
+    /// Class inherits from GenerateSlip class.
     /// </summary>
     class UploadCsv : GenerateSlip
     {

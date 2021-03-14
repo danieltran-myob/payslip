@@ -3,7 +3,7 @@ using System;
 namespace Payslip
 {
     /// <summary>
-    /// Class is inherits from GenerateSlip class
+    /// Class inherits from GenerateSlip class
     /// </summary>
     class ManualInput : GenerateSlip
     {
