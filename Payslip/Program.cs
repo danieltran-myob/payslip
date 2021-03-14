@@ -1,7 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Payslip
 {
@@ -19,10 +16,14 @@ namespace Payslip
                 var uploadCsvFile = new UploadCsv();
                 uploadCsvFile.Upload();
 
-            } else if (answer == "NO") {
+            } 
+            else if (answer == "NO") 
+            {
                 var manualEntry = new ManualInput();
                 manualEntry.Manual();
-            } else {
+            }
+            else 
+            {
                 Console.WriteLine("Answer is invalid");
             }
         }
