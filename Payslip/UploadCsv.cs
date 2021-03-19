@@ -9,6 +9,13 @@ namespace Payslip
     /// </summary>
     class UploadCsv : GenerateSlip, IUserInput, ICsvOutput
     {
+        public List<string> EmployeePaySlip
+        {get; set;}
+
+        public UploadCsv()
+        {
+            EmployeePaySlip = new List<string>();
+        }
         public void UserInput()
         {
             Console.Write("Please enter the csv file you would like to upload.  ");
@@ -42,16 +49,22 @@ namespace Payslip
                         PaymentStartDate = paymentStartDateList[i];
 
                         Console.WriteLine(PrintPaySlip());
-                        // GenerateCsv();
+                        
+                        EmployeePaySlip.Add($"{Name} {Surname},{PayPeriod()},{GrossIncome()},{IncomeTax()},{NetIncome()} , {Super()}");
                     }
                 }
+                GenerateCsv();
         }
 
         public void GenerateCsv()
         {
             StringBuilder csvcontent = new StringBuilder();
-            csvcontent.AppendLine($"{Name} {Surname},{PayPeriod()},{GrossIncome()},{IncomeTax()},{NetIncome()} , {Super()}");
+            csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
             string csvPath = $"csvOutput/new.csv";
+            foreach(string emplpoyee in EmployeePaySlip)
+            {
+                csvcontent.AppendLine(emplpoyee);
+            }
             File.AppendAllText(csvPath, csvcontent.ToString());
         }
     }
