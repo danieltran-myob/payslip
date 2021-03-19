@@ -9,42 +9,17 @@ namespace Payslip
     /// </summary>
     class UploadCsv : GenerateSlip, IUserInput, ICsvOutput
     {
-        public List<string> firstNameList;
-        public List<string> FirstNameList
-        {
-            get { return firstNameList;}
-            set { firstNameList = new List<string>(); }
-        }
-        public List<string> lastNameList;
-        public List<string> LastNameList
-        {
-            get { return lastNameList;}
-            set { lastNameList = new List<string>(); }
-        }
-        public List<string> annualSalaryList;
-        public List<string> AnnualSalaryList
-        {
-            get { return annualSalaryList;}
-            set { annualSalaryList = new List<string>(); }
-        }
-        public List<string> superRateList;
-        public List<string> SuperRateList
-        {
-            get { return superRateList;}
-            set { superRateList = new List<string>(); }
-        }
-        public List<string> paymentStartDateList;
-        public List<string> PaymentStartDateList
-        {
-            get { return firstNameList;}
-            set { firstNameList = new List<string>(); }
-        }
         public void UserInput()
         {
             Console.Write("Please enter the csv file you would like to upload.  ");
                 string csvFile = Console.ReadLine();
                 using(var reader = new StreamReader($"csv/{csvFile}"))
                 {
+                    var firstNameList = new List<string>();
+                    var lastNameList = new List<string>();
+                    var annualSalaryList = new List<string>();
+                    var superRateList = new List<string>();
+                    var paymentStartDateList = new List<string>();
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
