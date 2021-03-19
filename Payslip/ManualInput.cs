@@ -1,11 +1,13 @@
 using System;
+using System.IO;
+using System.Text;
 
 namespace Payslip
 {
     /// <summary>
     /// Class inherits from GenerateSlip class
     /// </summary>
-    class ManualInput : GenerateSlip, IUserInput
+    class ManualInput : GenerateSlip, IUserInput, ICsvOutput
     {
         public void UserInput()
         {
@@ -27,6 +29,14 @@ namespace Payslip
             Console.WriteLine(PrintPaySlip());
             GenerateCsv();
         }
+        public void GenerateCsv()
+        {
+            StringBuilder csvcontent = new StringBuilder();
+            csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
+            csvcontent.AppendLine($"{Name} {Surname},{PayPeriod()},{GrossIncome()},{IncomeTax()},{NetIncome()} , {Super()}");
+            string csvPath = $"csvOutput/new.csv";
+            File.AppendAllText(csvPath, csvcontent.ToString());
+        }     
     }
 
 
