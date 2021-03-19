@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Text;
 namespace Payslip
 {
     /// <summary>
@@ -65,16 +63,5 @@ namespace Payslip
             return $"Name: {Name} {Surname} \nPay Period: {PayPeriod()} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
         }
 
-        /// <summary>
-        /// Method creates a csv output for the payslip
-        /// </summary>
-        public void GenerateCsv()
-        {
-                StringBuilder csvcontent = new StringBuilder();
-                csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
-                csvcontent.AppendLine($"{Name} {Surname},{PayPeriod()},{GrossIncome()},{IncomeTax()},{NetIncome()} , {Super()}");
-                string csvPath = $"csvOutput/new.csv";
-                File.AppendAllText(csvPath, csvcontent.ToString());
-        }     
     }
 }
