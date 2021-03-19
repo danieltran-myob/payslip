@@ -14,13 +14,13 @@ namespace Payslip
             if(answer == "YES")
             {
                 var uploadCsvFile = new UploadCsv();
-                uploadCsvFile.Upload();
+                uploadCsvFile.UserInput();
 
             } 
             else if (answer == "NO") 
             {
                 var manualEntry = new ManualInput();
-                manualEntry.Manual();
+                manualEntry.UserInput();
             }
             else 
             {

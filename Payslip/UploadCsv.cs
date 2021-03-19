@@ -8,7 +8,7 @@ namespace Payslip
     /// </summary>
     class UploadCsv : GenerateSlip
     {
-        public void Upload()
+        public void UserInput()
         {
             Console.Write("Please enter the csv file you would like to upload.  ");
                 string csvFile = Console.ReadLine();

@@ -5,9 +5,9 @@ namespace Payslip
     /// <summary>
     /// Class inherits from GenerateSlip class
     /// </summary>
-    class ManualInput : GenerateSlip
+    class ManualInput : GenerateSlip, IUserInput
     {
-        public void Manual()
+        public void UserInput()
         {
 
             Console.Write("Please input your name:  ");
