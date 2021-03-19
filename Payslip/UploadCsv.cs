@@ -1,24 +1,50 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Collections.Generic;
 namespace Payslip
 {
     /// <summary>
     /// Class inherits from GenerateSlip class.
     /// </summary>
-    class UploadCsv : GenerateSlip
+    class UploadCsv : GenerateSlip, IUserInput, ICsvOutput
     {
+        public List<string> firstNameList;
+        public List<string> FirstNameList
+        {
+            get { return firstNameList;}
+            set { firstNameList = new List<string>(); }
+        }
+        public List<string> lastNameList;
+        public List<string> LastNameList
+        {
+            get { return lastNameList;}
+            set { lastNameList = new List<string>(); }
+        }
+        public List<string> annualSalaryList;
+        public List<string> AnnualSalaryList
+        {
+            get { return annualSalaryList;}
+            set { annualSalaryList = new List<string>(); }
+        }
+        public List<string> superRateList;
+        public List<string> SuperRateList
+        {
+            get { return superRateList;}
+            set { superRateList = new List<string>(); }
+        }
+        public List<string> paymentStartDateList;
+        public List<string> PaymentStartDateList
+        {
+            get { return firstNameList;}
+            set { firstNameList = new List<string>(); }
+        }
         public void UserInput()
         {
             Console.Write("Please enter the csv file you would like to upload.  ");
                 string csvFile = Console.ReadLine();
                 using(var reader = new StreamReader($"csv/{csvFile}"))
                 {
-                    var firstNameList = new List<string>();
-                    var lastNameList = new List<string>();
-                    var annualSalaryList = new List<string>();
-                    var superRateList = new List<string>();
-                    var paymentStartDateList = new List<string>();
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
@@ -31,6 +57,7 @@ namespace Payslip
                         paymentStartDateList.Add(values[4]);
                     }
                     
+
                     for (int i = 1; i < firstNameList.Count; i++)
                     {
                         Name = firstNameList[i];
@@ -43,6 +70,14 @@ namespace Payslip
                         // GenerateCsv();
                     }
                 }
+        }
+
+        public void GenerateCsv()
+        {
+            StringBuilder csvcontent = new StringBuilder();
+            csvcontent.AppendLine($"{Name} {Surname},{PayPeriod()},{GrossIncome()},{IncomeTax()},{NetIncome()} , {Super()}");
+            string csvPath = $"csvOutput/new.csv";
+            File.AppendAllText(csvPath, csvcontent.ToString());
         }
     }
 }
