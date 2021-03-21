@@ -12,6 +12,10 @@ namespace Payslip
         public List<string> EmployeePaySlip
         {get; set;}
 
+        public UploadCsv()
+        {
+            EmployeePaySlip = new List<string>();
+        }
         public void UserInput()
         {
             Console.Write("Please enter the csv file you would like to upload.  ");

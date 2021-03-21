@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/Users/danieltran/payslip/Payslip/Payslip.csproj": {}
+    "/Users/daniel.tran/Desktop/payslip/Payslip/Payslip.csproj": {}
   },
   "projects": {
-    "/Users/danieltran/payslip/Payslip/Payslip.csproj": {
+    "/Users/daniel.tran/Desktop/payslip/Payslip/Payslip.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/danieltran/payslip/Payslip/Payslip.csproj",
+        "projectUniqueName": "/Users/daniel.tran/Desktop/payslip/Payslip/Payslip.csproj",
         "projectName": "Payslip",
-        "projectPath": "/Users/danieltran/payslip/Payslip/Payslip.csproj",
-        "packagesPath": "/Users/danieltran/.nuget/packages/",
-        "outputPath": "/Users/danieltran/payslip/Payslip/obj/",
+        "projectPath": "/Users/daniel.tran/Desktop/payslip/Payslip/Payslip.csproj",
+        "packagesPath": "/Users/daniel.tran/.nuget/packages/",
+        "outputPath": "/Users/daniel.tran/Desktop/payslip/Payslip/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/danieltran/.nuget/NuGet/NuGet.Config"
+          "/Users/daniel.tran/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }
