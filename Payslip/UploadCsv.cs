@@ -9,13 +9,8 @@ namespace Payslip
     /// </summary>
     class UploadCsv : GenerateSlip, IUserInput, ICsvOutput
     {
-        public List<string> EmployeePaySlip
-        {get; set;}
+        public List<string> EmployeePaySlip = new List<string>();
 
-        public UploadCsv()
-        {
-            EmployeePaySlip = new List<string>();
-        }
         public void UserInput()
         {
             Console.Write("Please enter the csv file you would like to upload.  ");
