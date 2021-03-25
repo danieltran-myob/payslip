@@ -56,9 +56,9 @@ namespace Payslip
             StringBuilder csvcontent = new StringBuilder();
             csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
             string csvPath = $"csvOutput/new.csv";
-            foreach(string emplpoyee in EmployeePaySlip)
+            foreach(string employee in EmployeePaySlip)
             {
-                csvcontent.AppendLine(emplpoyee);
+                csvcontent.AppendLine(employee);
             }
             File.AppendAllText(csvPath, csvcontent.ToString());
         }
