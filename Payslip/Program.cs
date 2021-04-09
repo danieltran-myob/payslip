@@ -10,21 +10,24 @@ namespace Payslip
             Console.WriteLine("Welcome to the payslip generator!");
             
             Console.Write("Would you like to upload a csv file? Please answer YES/NO    ");
-            string answer = Console.ReadLine().ToUpper();
-            if(answer == "YES")
+            var answer = Console.ReadLine().ToUpper();
+            switch (answer)
             {
-                var uploadCsvFile = new UploadCsv();
-                uploadCsvFile.UserInput();
-
-            } 
-            else if (answer == "NO") 
-            {
-                var manualEntry = new ManualInput();
-                manualEntry.UserInput();
-            }
-            else 
-            {
-                Console.WriteLine("Answer is invalid");
+                case "YES":
+                {
+                    var uploadCsvFile = new UploadCsv();
+                    uploadCsvFile.UserInput();
+                    break;
+                }
+                case "NO":
+                {
+                    var manualEntry = new ManualInput();
+                    manualEntry.UserInput();
+                    break;
+                }
+                default:
+                    Console.WriteLine("Answer is invalid");
+                    break;
             }
         }
     }

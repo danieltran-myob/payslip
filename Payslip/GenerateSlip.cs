@@ -6,24 +6,30 @@ namespace Payslip
     /// </summary>
     class GenerateSlip
     {
-        public  string Name
-        {get; set;}
-        public  string Surname
-        {get; set;}
-        public  double AnnualSalary
-        {get; set;}
-        public  double SuperRate
-        {get; set;}
-        public  string PaymentStartDate
-        {get; set;}
-        public  string PaymentEndDate
+        protected string Name
         {get; set;}
 
-        public  string PayPeriod()
+        protected string Surname
+        {get; set;}
+
+        protected double AnnualSalary
+        {get; set;}
+
+        protected double SuperRate
+        {get; set;}
+
+        protected string PaymentStartDate
+        {get; set;}
+
+        protected string PaymentEndDate
+        {get; set;}
+
+        protected string PayPeriod()
         {
             return String.IsNullOrEmpty(PaymentEndDate) ? PaymentStartDate : $"{PaymentStartDate} - {PaymentEndDate}";
         }
-        public  double GrossIncome()
+
+        protected double GrossIncome()
         {
             return Math.Floor(AnnualSalary/12);
         }
@@ -32,33 +38,34 @@ namespace Payslip
         /// Income tax calculator 
         /// </summary>
         /// <returns>Income tax based on Annual salary</returns>
-        public  double IncomeTax()
+        protected double IncomeTax()
         {
-            if(AnnualSalary <= 18200)
+            switch (AnnualSalary)
             {
-                return 0;
-            } else if (AnnualSalary > 18200 && AnnualSalary <= 37000) {
-                return Math.Ceiling(((AnnualSalary - 18200) * 0.19) / 12); 
-            } else if (AnnualSalary > 37000 && AnnualSalary <= 87000) {
-                return Math.Ceiling((3572 + (AnnualSalary - 37000) * 0.325) / 12);
-            } else if (AnnualSalary > 87000 && AnnualSalary <= 180000) {
-                return Math.Ceiling((19822 + (AnnualSalary - 87000) * 0.37) / 12);
-            } else {
-                return Math.Ceiling((54232 + (AnnualSalary - 180000) * 0.45) / 12);
+                case <= 18200:
+                    return 0;
+                case > 18200 and <= 37000:
+                    return Math.Ceiling(((AnnualSalary - 18200) * 0.19) / 12);
+                case > 37000 and <= 87000:
+                    return Math.Ceiling((3572 + (AnnualSalary - 37000) * 0.325) / 12);
+                case > 87000 and <= 180000:
+                    return Math.Ceiling((19822 + (AnnualSalary - 87000) * 0.37) / 12);
+                default:
+                    return Math.Ceiling((54232 + (AnnualSalary - 180000) * 0.45) / 12);
             }
         }
 
-        public  double NetIncome()
+        protected double NetIncome()
         {
             return GrossIncome() - IncomeTax();
         }
 
-        public  double Super()
+        protected double Super()
         {
             return Math.Floor(GrossIncome() * (SuperRate/100));
         }
 
-        public  string PrintPaySlip()
+        protected string PrintPaySlip()
         {
             return $"Name: {Name} {Surname} \nPay Period: {PayPeriod()} \nGross Income: {GrossIncome()} \nIncome Tax: {IncomeTax()} \nNet Income: {NetIncome()} \nSuper: {Super()} \n";
         }

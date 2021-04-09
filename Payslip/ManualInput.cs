@@ -31,10 +31,10 @@ namespace Payslip
         }
         public void GenerateCsv()
         {
-            StringBuilder csvcontent = new StringBuilder();
+            var csvcontent = new StringBuilder();
             csvcontent.AppendLine("name,pay period,gross income,income tax,net income,super");
             csvcontent.AppendLine($"{Name} {Surname},{PayPeriod()},{GrossIncome()},{IncomeTax()},{NetIncome()} , {Super()}");
-            string csvPath = $"csvOutput/new.csv";
+            var csvPath = $"csvOutput/new.csv";
             File.AppendAllText(csvPath, csvcontent.ToString());
         }     
     }
